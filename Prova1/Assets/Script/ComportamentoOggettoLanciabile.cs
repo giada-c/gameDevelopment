@@ -35,12 +35,9 @@ public class ComportamentoOggettoLanciabile : MonoBehaviour
         
         terra = Physics.CheckSphere(_groundChecker.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
         float vita = barraVita.GetComponent<BarraVitaOggettoLanciabile>().GetHealth();
-        Debug.Log("cambio" + terra +"vita"+vita);
         if (vita <= 0 && terra)
         {
-            Debug.Log("Muoio");
             Destroy(gameObject);
-            
         }
     }
 

@@ -10,6 +10,9 @@ TagManager:
   - GrabZone
   - Barrier
   - dannoTest
+  - Enemy
+  - Damage
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,8 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
   - Player
+  - Ground
   - 
   - 
   - 

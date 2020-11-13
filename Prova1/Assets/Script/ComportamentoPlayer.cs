@@ -28,13 +28,12 @@ public class ComportamentoPlayer : MonoBehaviour
             if (!other.gameObject.GetComponent<ComportamentoOggettoLanciabile>().isTerra())
                 danno(other.gameObject.GetComponent<ComportamentoOggettoLanciabile>().getDanno());
         }
-        if (other.gameObject.tag == "Damage") {
+        if (other.gameObject.tag == "Damage" || other.gameObject.tag == "Enemy") {
             danno(7);
         }
     }
     public void danno(int danno)
     {
-        Debug.Log("DANNO");
         barraVita.GetComponent<BarraVitaPlayer>().TakeDamage(danno);
         //GetComponent<Material>().color = Color.red;
     }

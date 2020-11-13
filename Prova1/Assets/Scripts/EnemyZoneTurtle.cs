@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 
@@ -11,7 +12,6 @@ public class EnemyZoneTurtle : MonoBehaviour
     
     public float rotationSpeedIntruder = 3f;
 
-    // this can be handled better with Events
     private Transform _intruder;
     private SimplePhysicsRotation _idleRotationBehaviour;
     private Rigidbody _rigidbody;
@@ -48,6 +48,7 @@ public class EnemyZoneTurtle : MonoBehaviour
     //Detect collisions between the GameObjects with Colliders attached
     void OnTriggerEnter(Collider other)
     {
+
         //Check for a match with the specific tag on any GameObject that collides with your GameObject
         if (other.gameObject.tag == "Player")
         {
