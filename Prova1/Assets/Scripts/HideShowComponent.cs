@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HideShowComponent : MonoBehaviour
 {
-    public bool isVisible = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +16,13 @@ public class HideShowComponent : MonoBehaviour
         
     }
 
-    public void ChangeState()
+    public void Show()
     {
-        isVisible ^= isVisible;
-        gameObject.SetActive(isVisible); //object on top of the window
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

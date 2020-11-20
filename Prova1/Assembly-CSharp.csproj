@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\WanderingAI.cs" />
     <Compile Include="Assets\Script\BarraVitaOggettoLanciabile.cs" />
+    <Compile Include="Assets\Scripts\OptionPopupHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerGameController.cs" />
     <Compile Include="Assets\Script\PlayerMovement2.cs" />
     <Compile Include="Assets\Script\PlayerMovement.cs" />
@@ -70,7 +71,9 @@
     <Compile Include="Assets\Script\BarraVitaPlayer.cs" />
     <Compile Include="Assets\Script\Lancio.cs" />
     <Compile Include="Assets\Scripts\Shot.cs" />
+    <Compile Include="Assets\Scripts\HideShowComponent.cs" />
     <Compile Include="Assets\Scripts\TargetBehaviour.cs" />
+    <Compile Include="Assets\Scripts\PauseControl.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
     <Compile Include="Assets\ArenaTest\StarSpawn.cs" />
     <Compile Include="Assets\FantasyCharactersLite\Scripts\ChangeDisplay.cs" />
@@ -79,11 +82,11 @@
     <Compile Include="Assets\Script\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\TurtleShellAttack.cs" />
     <Compile Include="Assets\Scripts\EnemyZone.cs" />
-    <Compile Include="Assets\Scripts\OptionPopupHandler.cs" />
-    <Compile Include="Assets\Scripts\PauseControl.cs" />
-    <Compile Include="Assets\Scripts\HideShowComponent.cs" />
+    <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
+     <None Include="Assets\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
      <None Include="Assets\SimpleHealthBar\documentation.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
