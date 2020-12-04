@@ -32,7 +32,7 @@ RectTransform:
   m_Children:
   - {fileID: 5186104026604921523}
   m_Father: {fileID: 5352075724732270506}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -193,6 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8330268147452564004, guid: 2a39988401962a042a57b91b1b264f13, type: 3}
+    - {fileID: 5050888454992272537, guid: 2a39988401962a042a57b91b1b264f13, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2a39988401962a042a57b91b1b264f13, type: 3}
 --- !u!4 &5352075724732270506 stripped
 Transform:

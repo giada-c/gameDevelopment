@@ -1,58 +1,107 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GrabZone : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    int maxItem = 3;
+    private Inventario inventario;
 
+    [SerializeField]
+    private Transform portaOggetto;
 
-    public Transform portaOggetto;
+    [SerializeField]
+    private GameObject drawInventory;
 
     public float force = 50;
-   private  GameObject player;
+    private  GameObject player;
     private GameObject raccolto = null;
     private bool possoRaccogliere = false;
     private GameObject possibileRaccolta;
-    void Start()
-    {
-        
 
+    public List<RawImage> image = new List<RawImage>();
+    public Texture2D tx;
+
+    bool visibile = false;
+    private void Start()
+    {
+        inventario = new Inventario(maxItem);
+        tx = Resources.Load<Texture2D>("Texture/prova");
+        for (int i = 0; i < maxItem; i++)
+        {
+            image.Add(drawInventory.transform.GetChild(i).GetComponent<RawImage>());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (raccolto != null && (Input.GetKeyUp(KeyCode.Mouse1)|| Input.GetKeyUp(KeyCode.Joystick1Button2))) {
-            //Debug.Log("POSSO LANCIARE");
-            //raccolto.gameObject.SetActive(true);
-            //Vector3 v = player.GetComponent<Rigidbody>().velocity;
-            
-            raccolto.GetComponent<ComportamentoOggettoLanciabile>().lancia(transform.forward,force);
-           
-            
-
-            raccolto = null;
-            //Debug.Log("YEEEET");
-        }
-
-        else if (possoRaccogliere && (Input.GetKeyDown(KeyCode.Mouse1)|| Input.GetKeyDown(KeyCode.Joystick1Button2)))
+        //Lancia
+        if (Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Joystick1Button2))
         {
-            //possibileRaccolta.SetActive(false);
-            raccolto = possibileRaccolta;
-            raccolto.GetComponent<ComportamentoOggettoLanciabile>().SetPortaOggetto(portaOggetto);
-            raccolto.GetComponent<Renderer>().enabled = false;
-
+            Debug.Log("YEEEET");
+            if (inventario.getState() != InventoryState.EMPTY)
+            {
+                Debug.Log("YEEEET1");
+                GameObject g = inventario.removeItem();
+                if (g != null)
+                {
+                    g.SetActive(true);
+                    g.GetComponent<ComportamentoOggettoLanciabile>().lancia(transform.forward, force);
+                   
+                    
+                }
+                
+            }
+            
         }
+
+        if (Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.Joystick1Button2)) {
+            Debug.Log("RACCOLTA");
+            if (possoRaccogliere  && inventario.getState() != InventoryState.FULL)
+            {
+                Debug.Log("RACCOLTA1");
+                possibileRaccolta.GetComponent<ComportamentoOggettoLanciabile>().SetPortaOggetto(portaOggetto);
+                GameObject g = possibileRaccolta;
+                inventario.addItem(g);
+                g.SetActive(false);
+                //Destroy(possibileRaccolta);
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.I))
+        {
+            if (visibile)
+            {
+                for (int i = 0; i < maxItem; i++)
+                {
+                    image[i].enabled = true;
+                    image[i].texture = tx;
+                }
+                visibile = !visibile;
+            }
+            else
+            {
+                for (int i = 0; i < maxItem; i++)
+                {
+
+                    image[i].enabled = false;
+                }
+                visibile = !visibile;
+
+            }
+        }
+            
+
+        
     }
 
     void OnTriggerEnter(Collider other)
     {
-        //Check for a match with the specific tag on any GameObject that collides with your GameObject
         if (other.gameObject.tag == "raccoglibile" && other.gameObject.GetComponent<ComportamentoOggettoLanciabile>().isTerra() )
         {
-            //Debug.Log("POSSO RACCOGLIERE");
             possoRaccogliere = true;
             possibileRaccolta = other.gameObject;
             
@@ -60,8 +109,6 @@ public class GrabZone : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-       
-            //Debug.Log(" NON POSSO RACCOGLIERE");
             possoRaccogliere = false;
             possibileRaccolta = null;
         

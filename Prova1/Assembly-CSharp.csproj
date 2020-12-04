@@ -56,31 +56,32 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\WanderingAI.cs" />
     <Compile Include="Assets\Script\BarraVitaOggettoLanciabile.cs" />
+    <Compile Include="Assets\Scripts\PlayerGameController.cs" />
     <Compile Include="Assets\Script\PlayerMovement2.cs" />
     <Compile Include="Assets\Script\PlayerMovement.cs" />
     <Compile Include="Assets\Script\ComportamentoOggettoLanciabile.cs" />
     <Compile Include="Assets\ArenaTest\SpawnItem.cs" />
+    <Compile Include="Assets\FantasyCharactersLite\Scripts\RotateAround.cs" />
     <Compile Include="Assets\Script\GrabZone.cs" />
+    <Compile Include="Assets\Scripts\SimplePhysicsRotation.cs" />
+    <Compile Include="Assets\Scripts\RigidbodyCharacter.cs" />
+    <Compile Include="Assets\Scripts\TargetBehaviourDropMob.cs" />
     <Compile Include="Assets\SimpleHealthBar\Healthbar.cs" />
     <Compile Include="Assets\Script\ComportamentoPlayer.cs" />
     <Compile Include="Assets\Script\BarraVitaPlayer.cs" />
     <Compile Include="Assets\Script\Lancio.cs" />
-    <Compile Include="Assets\ArenaTest\StarSpawn.cs" />
-    <Compile Include="Assets\Script\InventoryManager.cs" />
-    <Compile Include="Assets\Scripts\WanderingAI.cs" />
-    <Compile Include="Assets\Scripts\PlayerGameController.cs" />
-    <Compile Include="Assets\FantasyCharactersLite\Scripts\RotateAround.cs" />
-    <Compile Include="Assets\Scripts\SimplePhysicsRotation.cs" />
-    <Compile Include="Assets\Scripts\RigidbodyCharacter.cs" />
-    <Compile Include="Assets\Scripts\TargetBehaviourDropMob.cs" />
     <Compile Include="Assets\Scripts\Shot.cs" />
     <Compile Include="Assets\Scripts\TargetBehaviour.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\ArenaTest\StarSpawn.cs" />
     <Compile Include="Assets\FantasyCharactersLite\Scripts\ChangeDisplay.cs" />
     <Compile Include="Assets\FantasyCharactersLite\Scripts\AttachToBody.cs" />
     <Compile Include="Assets\Scripts\EnemyZoneTurtle.cs" />
+    <Compile Include="Assets\Script\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\EnemyZone.cs" />
+    <Compile Include="Assets\Script\Player\Inventario.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\SimpleHealthBar\documentation.txt" />
