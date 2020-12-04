@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Security.Permissions;
 using UnityEngine;
 
@@ -27,7 +26,7 @@ public class TargetBehaviourDropMob : MonoBehaviour
     void Update()
     {
         //Conrol if the mob still alive
-        if (life == 0)
+        if (life <= 0)
         {
             Instantiate(objectToDrop, transform.position, Quaternion.identity);
             Destroy(gameObject);
@@ -67,11 +66,17 @@ public class TargetBehaviourDropMob : MonoBehaviour
     //Detect collisions between the GameObjects with Colliders attached
     void OnCollisionEnter(Collision collision)
     {
+
         //Check for a match with the specific tag on any GameObject that collides with your GameObject
-        if (collision.gameObject.tag == "Damage")
+        if (collision.gameObject.tag == "raccoglibile")
         {
-            _isHit = true;
-            --life;
+            danno(collision.gameObject.GetComponent<ComportamentoOggettoLanciabile>().getDanno());
         }
+    }
+
+    public void danno(int danno)
+    {
+        life -= danno;
+        //barraVita.GetComponent<BarraVitaPlayer>().TakeDamage(danno);
     }
 }

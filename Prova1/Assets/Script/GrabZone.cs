@@ -29,7 +29,7 @@ public class GrabZone : MonoBehaviour
     private void Start()
     {
         inventario = new Inventario(maxItem);
-        tx = Resources.Load<Texture2D>("Texture/prova");
+        tx = Resources.Load<Texture2D>("Texture/Cassa1");
         for (int i = 0; i < maxItem; i++)
         {
             image.Add(drawInventory.transform.GetChild(i).GetComponent<RawImage>());
