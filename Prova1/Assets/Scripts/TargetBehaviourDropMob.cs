@@ -37,13 +37,13 @@ public class TargetBehaviourDropMob : MonoBehaviour
         {
             _isHit = false;
             _isBleeding = true;
-            foreach (var r in targetRenderers)
+            /*foreach (var r in targetRenderers)
             {
                 foreach (var m in r.materials)
                 {
                     m.color = Color.red;
                 }
-            }
+            }*/
             _hitTimer = hitTime;
         }
         else if (_hitTimer > 0f) // While bleeding
@@ -53,13 +53,13 @@ public class TargetBehaviourDropMob : MonoBehaviour
         else if (_isBleeding) // Stop bleeding and return to normal state
         {
             _isBleeding = false;
-            foreach (var r in targetRenderers)
+            /*foreach (var r in targetRenderers)
             {
                 foreach (var m in r.materials)
                 {
                     m.color = Color.white;
                 }
-            }
+            }*/
         }
     }
 
@@ -78,5 +78,7 @@ public class TargetBehaviourDropMob : MonoBehaviour
     {
         life -= danno;
         //barraVita.GetComponent<BarraVitaPlayer>().TakeDamage(danno);
+        Messenger<string>.Broadcast(GameEvent.ENEMY_HIT, GameEvent.ENEMY_HIT, MessengerMode.DONT_REQUIRE_LISTENER);
+
     }
 }

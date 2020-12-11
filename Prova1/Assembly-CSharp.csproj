@@ -53,7 +53,7 @@
     <UnityVersion>2020.1.6f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\WanderingAI.cs" />
+    <Compile Include="Assets\Scripts\EnemyScript\WanderingAI.cs" />
     <Compile Include="Assets\Script\BarraVitaOggettoLanciabile.cs" />
     <Compile Include="Assets\Scripts\OptionPopupHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerGameController.cs" />
@@ -65,24 +65,28 @@
     <Compile Include="Assets\FantasyCharactersLite\Scripts\RotateAround.cs" />
     <Compile Include="Assets\Script\GrabZone.cs" />
     <Compile Include="Assets\Scripts\SimplePhysicsRotation.cs" />
-    <Compile Include="Assets\Scripts\RigidbodyCharacter.cs" />
+    <Compile Include="Assets\Scripts\EnemyScript\RigidbodyCharacter.cs" />
     <Compile Include="Assets\Scripts\TargetBehaviourDropMob.cs" />
     <Compile Include="Assets\SimpleHealthBar\Healthbar.cs" />
     <Compile Include="Assets\Script\ComportamentoPlayer.cs" />
     <Compile Include="Assets\Script\BarraVitaPlayer.cs" />
     <Compile Include="Assets\Script\Lancio.cs" />
-    <Compile Include="Assets\Scripts\Shot.cs" />
+    <Compile Include="Assets\Scripts\EnemyScript\Shot.cs" />
     <Compile Include="Assets\Scripts\HideShowComponent.cs" />
-    <Compile Include="Assets\Scripts\TargetBehaviour.cs" />
+    <Compile Include="Assets\Scripts\EnemyScript\TargetBehaviour.cs" />
     <Compile Include="Assets\Scripts\PauseControl.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
     <Compile Include="Assets\ArenaTest\StarSpawn.cs" />
     <Compile Include="Assets\FantasyCharactersLite\Scripts\ChangeDisplay.cs" />
     <Compile Include="Assets\FantasyCharactersLite\Scripts\AttachToBody.cs" />
-    <Compile Include="Assets\Scripts\EnemyZoneTurtle.cs" />
+    <Compile Include="Assets\Scripts\EnemyScript\EnemyZoneTurtle.cs" />
     <Compile Include="Assets\Script\InventoryManager.cs" />
-    <Compile Include="Assets\Scripts\TurtleShellAttack.cs" />
-    <Compile Include="Assets\Scripts\EnemyZone.cs" />
+    <Compile Include="Assets\Scripts\EnemyScript\TurtleShellAttack.cs" />
+    <Compile Include="Assets\Scripts\EnemyScript\EnemyZone.cs" />
+    <Compile Include="Assets\Scripts\ScoreManager.cs" />
+    <Compile Include="Assets\Scripts\ScoreView.cs" />
+    <Compile Include="Assets\Scripts\Messenger.cs" />
+    <Compile Include="Assets\Scripts\GameEvent.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
