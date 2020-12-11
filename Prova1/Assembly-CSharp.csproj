@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\PlayerGameController.cs" />
     <Compile Include="Assets\Script\PlayerMovement2.cs" />
     <Compile Include="Assets\Script\PlayerMovement.cs" />
+    <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
     <Compile Include="Assets\Script\ComportamentoOggettoLanciabile.cs" />
     <Compile Include="Assets\ArenaTest\SpawnItem.cs" />
     <Compile Include="Assets\FantasyCharactersLite\Scripts\RotateAround.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="Assets\Script\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\TurtleShellAttack.cs" />
     <Compile Include="Assets\Scripts\EnemyZone.cs" />
-    <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
