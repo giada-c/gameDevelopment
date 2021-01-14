@@ -7,110 +7,96 @@ public class GrabZone : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    int maxItem = 3;
-    private Inventario inventario;
-
-    [SerializeField]
-    private Transform portaOggetto;
-
-    [SerializeField]
-    private GameObject drawInventory;
-
+    public GameObject drawInventory;
+    public Transform portaOggetto;
     public float force = 50;
-    private  GameObject player;
-    private GameObject raccolto = null;
+    public GameObject player;
+
+   
     private bool possoRaccogliere = false;
     private GameObject possibileRaccolta;
 
-    public List<RawImage> image = new List<RawImage>();
-    public Texture2D tx;
+    private bool possoMangiare = false;
+    private GameObject possibileMangiata;
 
-    bool visibile = false;
-    private void Start()
+    public List<RawImage> image = new List<RawImage>();
+    private Inventario inventario;
+   
+    void Start()
     {
-        inventario = new Inventario(maxItem);
-        tx = Resources.Load<Texture2D>("Texture/Cassa1");
-        for (int i = 0; i < maxItem; i++)
-        {
-            image.Add(drawInventory.transform.GetChild(i).GetComponent<RawImage>());
-        }
+        inventario = new Inventario(3, image, drawInventory);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Lancia
         if (Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Joystick1Button2))
         {
-            Debug.Log("YEEEET");
-            if (inventario.getState() != InventoryState.EMPTY)
+             Debug.Log("YEEEET");
+             if (inventario.getState() != InventoryState.EMPTY)
+             {
+                 Debug.Log("YEEEET1");
+                 GameObject g = inventario.removeItem();
+                 if (g != null)
+                 {
+                     g.SetActive(true);
+                     g.GetComponent<ComportamentoOggettoLanciabile>().lancia(transform.forward, force);}
+                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.Joystick1Button2))
             {
-                Debug.Log("YEEEET1");
-                GameObject g = inventario.removeItem();
-                if (g != null)
+                if (possoRaccogliere && inventario.getState() != InventoryState.FULL)
                 {
-                    g.SetActive(true);
-                    g.GetComponent<ComportamentoOggettoLanciabile>().lancia(transform.forward, force);
-                   
-                    
+                    Debug.Log("RACCOLTA1");
+                    possibileRaccolta.GetComponent<ComportamentoOggettoLanciabile>().SetPortaOggetto(portaOggetto);
+                    GameObject g = possibileRaccolta;
+                    inventario.addItem(g);
+                    g.SetActive(false);
+                    //Destroy(possibileRaccolta);
+                    possoRaccogliere = false;
+                    possibileRaccolta = null;
                 }
-                
-            }
-            
-        }
-
-        if (Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.Joystick1Button2)) {
-            Debug.Log("RACCOLTA");
-            if (possoRaccogliere  && inventario.getState() != InventoryState.FULL)
-            {
-                Debug.Log("RACCOLTA1");
-                possibileRaccolta.GetComponent<ComportamentoOggettoLanciabile>().SetPortaOggetto(portaOggetto);
-                GameObject g = possibileRaccolta;
-                inventario.addItem(g);
-                g.SetActive(false);
-                //Destroy(possibileRaccolta);
-            }
-        }
-        if (Input.GetKeyUp(KeyCode.I))
-        {
-            if (visibile)
-            {
-                for (int i = 0; i < maxItem; i++)
+                if (possoMangiare)
                 {
-                    image[i].enabled = true;
-                    image[i].texture = tx;
+                    player.GetComponent<ComportamentoPlayer>().barraVita.GetComponent<BarraVitaPlayer>().GainHealth(possibileMangiata.GetComponent<Food>().getValue());
+                    possoMangiare = false;
+                    Destroy(possibileMangiata);
+                    possibileMangiata = null;
                 }
-                visibile = !visibile;
             }
-            else
+            if (Input.GetKeyUp(KeyCode.I))
             {
-                for (int i = 0; i < maxItem; i++)
-                {
-
-                    image[i].enabled = false;
-                }
-                visibile = !visibile;
-
+            Debug.Log("AAAAAAAA");
+            inventario.showInventory();
             }
-        }
-            
-
         
     }
-
     void OnTriggerEnter(Collider other)
     {
+        //Check for a match with the specific tag on any GameObject that collides with your GameObject
         if (other.gameObject.tag == "raccoglibile" && other.gameObject.GetComponent<ComportamentoOggettoLanciabile>().isTerra() )
         {
+            Debug.Log("POSSO RACCOGLIERE");
             possoRaccogliere = true;
-            possibileRaccolta = other.gameObject;
-            
+            possibileRaccolta = other.gameObject;  
+        }
+
+        if (other.gameObject.tag == "mangiabile")
+        {
+            possoMangiare = true;
+            possibileMangiata = other.gameObject;
         }
     }
     void OnTriggerExit(Collider other)
     {
+       
+            Debug.Log(" NON POSSO RACCOGLIERE");
             possoRaccogliere = false;
             possibileRaccolta = null;
-        
+
+        possoMangiare = false;
+        possibileMangiata = null;
+
     }
 }

@@ -6,6 +6,8 @@ public class ComportamentoPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public GameoverManager gameoverManager;
+
     public GameObject barraVita;
     void Start()
     {
@@ -15,7 +17,11 @@ public class ComportamentoPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Conrol if the player still alive
+        if (barraVita.GetComponent<BarraVitaPlayer>().GetHealth()==0)
+        {
+            //gameoverManager.gameOver();
+        }
     }
     private void OnCollisionEnter(Collision other)
     {
@@ -28,14 +34,19 @@ public class ComportamentoPlayer : MonoBehaviour
             if (!other.gameObject.GetComponent<ComportamentoOggettoLanciabile>().isTerra())
                 danno(other.gameObject.GetComponent<ComportamentoOggettoLanciabile>().getDanno());
         }
-        if (other.gameObject.tag == "Damage") {
+        if (other.gameObject.tag == "Damage" || other.gameObject.tag == "Enemy") {
             danno(7);
         }
     }
     public void danno(int danno)
     {
-        Debug.Log("DANNO");
         barraVita.GetComponent<BarraVitaPlayer>().TakeDamage(danno);
         //GetComponent<Material>().color = Color.red;
     }
+
+    public void setGameOvermanager(GameoverManager gm)
+    { 
+        gameoverManager = gm;
+    }
+
 }

@@ -191,10 +191,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5822862304776373868, guid: 1011417f01f26964785fd6801c451eed, type: 3}
+      propertyPath: m_Name
+      value: Item1
+      objectReference: {fileID: 0}
     - target: {fileID: 8534915276211308716, guid: 1011417f01f26964785fd6801c451eed, type: 3}
       propertyPath: barraVita
       value: 
       objectReference: {fileID: 8002827642796678053}
+    - target: {fileID: 8534915276211308716, guid: 1011417f01f26964785fd6801c451eed, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1011417f01f26964785fd6801c451eed, type: 3}
 --- !u!4 &8124937046946584981 stripped

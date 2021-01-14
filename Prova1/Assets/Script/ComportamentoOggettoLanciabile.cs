@@ -5,7 +5,7 @@ using UnityEngine;
 public class ComportamentoOggettoLanciabile : MonoBehaviour
 {
    
-    public string type;
+    public int type;
    
 
     public int danno;
@@ -35,12 +35,9 @@ public class ComportamentoOggettoLanciabile : MonoBehaviour
         
         terra = Physics.CheckSphere(_groundChecker.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
         float vita = barraVita.GetComponent<BarraVitaOggettoLanciabile>().GetHealth();
-        //Debug.Log("cambio" + terra +"vita"+vita);
         if (vita <= 0 && terra)
         {
-            //Debug.Log("Muoio");
             Destroy(gameObject);
-            
         }
     }
 
@@ -60,7 +57,7 @@ public class ComportamentoOggettoLanciabile : MonoBehaviour
     public void lancia(Vector3 tra, float force)
     {
         terra = false;
-        //Debug.Log("yeet");
+        Debug.Log("yeet");
         gameObject.GetComponent<Renderer>().enabled = true;
         this.transform.position = portaOggetto.transform.position;
         Rigidbody rb = this.GetComponent<Rigidbody>();
@@ -69,5 +66,10 @@ public class ComportamentoOggettoLanciabile : MonoBehaviour
         barraVita.gameObject.GetComponent<BarraVitaOggettoLanciabile>().TakeDamage(1);
 
 
+    }
+
+    public int getType()
+    {
+        return type;
     }
 }

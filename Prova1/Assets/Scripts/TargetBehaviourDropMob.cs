@@ -10,10 +10,15 @@ public class TargetBehaviourDropMob : MonoBehaviour
     public int life = 5;
     public GameObject objectToDrop;
 
+    public AudioSource audioSource;
+    public MusicManager audioManager;
+
     public Renderer[] targetRenderers;
     private bool _isHit = false;
     private bool _isBleeding = false;
     private float _hitTimer = 0f;
+
+    private bool isOnDestroy = false;
 
     void Awake()
     {
@@ -23,13 +28,23 @@ public class TargetBehaviourDropMob : MonoBehaviour
         }
     }
 
+
+    IEnumerator beforeDestroy(float audioLenght)
+    {
+        yield return new WaitForSeconds(audioLenght);
+        Instantiate(objectToDrop, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
     void Update()
     {
         //Conrol if the mob still alive
-        if (life <= 0)
+        if (life <= 0 && !isOnDestroy)
         {
-            Instantiate(objectToDrop, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            isOnDestroy = true;
+
+                audioSource.PlayOneShot(audioSource.clip, audioManager.ambientVolume);
+            StartCoroutine(beforeDestroy(audioSource.clip.length));
         }
 
 
@@ -37,13 +52,13 @@ public class TargetBehaviourDropMob : MonoBehaviour
         {
             _isHit = false;
             _isBleeding = true;
-            foreach (var r in targetRenderers)
+            /*foreach (var r in targetRenderers)
             {
                 foreach (var m in r.materials)
                 {
                     m.color = Color.red;
                 }
-            }
+            }*/
             _hitTimer = hitTime;
         }
         else if (_hitTimer > 0f) // While bleeding
@@ -53,13 +68,13 @@ public class TargetBehaviourDropMob : MonoBehaviour
         else if (_isBleeding) // Stop bleeding and return to normal state
         {
             _isBleeding = false;
-            foreach (var r in targetRenderers)
+            /*foreach (var r in targetRenderers)
             {
                 foreach (var m in r.materials)
                 {
                     m.color = Color.white;
                 }
-            }
+            }*/
         }
     }
 
@@ -78,5 +93,18 @@ public class TargetBehaviourDropMob : MonoBehaviour
     {
         life -= danno;
         //barraVita.GetComponent<BarraVitaPlayer>().TakeDamage(danno);
+        Messenger<string>.Broadcast(GameEvent.ENEMY_HIT, GameEvent.ENEMY_HIT, MessengerMode.DONT_REQUIRE_LISTENER);
+
+        Debug.Log(audioManager.getVolumeAmbient());
+        Debug.Log(audioManager.ambientVolume);
+        if (audioManager.ambientOn) 
+            audioSource.PlayOneShot(audioSource.clip, audioManager.ambientVolume);           
+
+
+    }
+
+    public void setAudioManager( MusicManager audio)
+    {
+        audioManager = audio;
     }
 }

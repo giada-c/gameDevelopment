@@ -47,7 +47,7 @@ public class PlayerMovement2 : MonoBehaviour
 
         if (IsGrounded())
         {
-            Debug.Log("TERRA");
+
 
             moveX = Input.GetAxis("Horizontal");
             moveZ = Input.GetAxis("Vertical");
@@ -92,7 +92,6 @@ public class PlayerMovement2 : MonoBehaviour
         }
         else
         {
-            Debug.Log("NON TERRA");
         }
         
     }

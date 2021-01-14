@@ -10,6 +10,10 @@ TagManager:
   - GrabZone
   - Barrier
   - dannoTest
+  - Obstacle
+  - Enemy
+  - Damage
+  - mangiabile
   layers:
   - Default
   - TransparentFX

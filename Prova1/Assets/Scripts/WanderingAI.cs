@@ -34,15 +34,18 @@ public class WanderingAI : MonoBehaviour
         // transform.Translate(0, 0, speed * Time.deltaTime);
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        /*if (Physics.SphereCast(ray, 0.75f, out hit))
+        if (Physics.SphereCast(ray, 0.75f, out hit))
         {
             if (hit.transform.tag == obstacleTag && hit.distance < obstacleRange)
             {
                 float angle = Random.Range(-110, 110);
                 _rigidbody.MoveRotation(Quaternion.Euler(new Vector3(0, angle, 0)) * transform.localRotation);
             }
-        }*/
+        }
         _position += Time.fixedDeltaTime * speed * transform.forward;
         _rigidbody.MovePosition(_position);
+
+        /*if (transform.position.x > 100 || transform.position.x < -100 || transform.position.z > 100 || transform.position.z < -100)
+            Destroy(gameObject);*/
     }
 }

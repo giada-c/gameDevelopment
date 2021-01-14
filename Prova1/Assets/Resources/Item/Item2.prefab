@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3188540005140843581, guid: c63bbeb1211003c43af8c913b90e821a, type: 3}
+      propertyPath: m_Name
+      value: Item2
+      objectReference: {fileID: 0}
     - target: {fileID: 5449794118098064923, guid: c63bbeb1211003c43af8c913b90e821a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -143,6 +147,10 @@ PrefabInstance:
       propertyPath: barraVita
       value: 
       objectReference: {fileID: 5239813292119733764}
+    - target: {fileID: 6520903584390321990, guid: c63bbeb1211003c43af8c913b90e821a, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8726383612685986308, guid: c63bbeb1211003c43af8c913b90e821a, type: 3}
       propertyPath: m_Name
       value: Roccia2

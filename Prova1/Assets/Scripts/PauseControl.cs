@@ -7,6 +7,20 @@ public class PauseControl : MonoBehaviour
     private bool _gamePaused;
     public static PauseControl Instance = null;
 
+    public void PauseGame(bool pause)
+    {
+        if (pause)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+
+        _gamePaused = pause;
+    }
+
     void Awake()
     {
         // singleton routine
@@ -21,20 +35,7 @@ public class PauseControl : MonoBehaviour
             return;
         }
 
-        _gamePaused = false;
-    }
-
-    public void PauseGame(bool pause)
-    {
-        if (pause)
-        {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
-
-        _gamePaused = pause;
+        PauseGame(true);
+        
     }
 }

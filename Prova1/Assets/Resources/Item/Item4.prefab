@@ -135,10 +135,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5191316506305660406, guid: 2252501b4f2f16640ad41a36bd7e9308, type: 3}
+      propertyPath: m_Name
+      value: Item4
+      objectReference: {fileID: 0}
     - target: {fileID: 7540497829134931571, guid: 2252501b4f2f16640ad41a36bd7e9308, type: 3}
       propertyPath: barraVita
       value: 
       objectReference: {fileID: 4804123675785063302}
+    - target: {fileID: 7540497829134931571, guid: 2252501b4f2f16640ad41a36bd7e9308, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8859632188006242174, guid: 2252501b4f2f16640ad41a36bd7e9308, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5520356

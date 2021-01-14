@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: barraVita
       value: 
       objectReference: {fileID: 5364009128008378531}
+    - target: {fileID: 473119059172616504, guid: 050d8409bc118ce439619d311e4e5581, type: 3}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 961899201962279268, guid: 050d8409bc118ce439619d311e4e5581, type: 3}
       propertyPath: m_Name
       value: Cassa2
@@ -194,6 +198,10 @@ PrefabInstance:
     - target: {fileID: 6607027996195128772, guid: 050d8409bc118ce439619d311e4e5581, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607027996195128772, guid: 050d8409bc118ce439619d311e4e5581, type: 3}
+      propertyPath: m_Name
+      value: Item3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 050d8409bc118ce439619d311e4e5581, type: 3}
