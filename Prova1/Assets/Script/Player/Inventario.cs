@@ -9,14 +9,14 @@ FULL, EMPTY, OTHER
 }
 public class Inventario
 {
-    
+   public GameObject drawInventory;
     private Stack<GameObject> inventario = new Stack<GameObject>();
     private List<Texture2D> textures = new List<Texture2D>();
     private List<RawImage> image;
     Texture2D bordo, vuoto;
     private bool visibile = false;
     private int maxItem=2;
-    public Inventario(int mi, List<RawImage> im, GameObject drawInventory) {
+    public Inventario(int mi,List<RawImage> im, GameObject drawInventory) {
         maxItem = mi;
         image = im;
         for (int i = 0; i < maxItem; i++)
@@ -60,12 +60,14 @@ public class Inventario
         
             for (int i = 0; i < maxItem; i++)
             {
-                if (visibile)
-                    image[i].enabled = true;
-                else
-                    image[i].enabled = false;
+            if (visibile)
+            {
+                print();
             }
-            
+            else
+                image[i].enabled = false;
+            }
+       
         
     }
     public void print()

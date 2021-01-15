@@ -138,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rotationY += 1;
             }
+            
         }
 
         // adapt input to where the character local rotation, otherwise wasd will move in world space

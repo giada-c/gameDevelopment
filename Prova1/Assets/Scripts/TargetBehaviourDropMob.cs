@@ -32,6 +32,7 @@ public class TargetBehaviourDropMob : MonoBehaviour
     IEnumerator beforeDestroy(float audioLenght)
     {
         yield return new WaitForSeconds(audioLenght);
+        Debug.Log("MUORI e SPARISCI");
         Instantiate(objectToDrop, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
@@ -43,8 +44,9 @@ public class TargetBehaviourDropMob : MonoBehaviour
         {
             isOnDestroy = true;
 
-                audioSource.PlayOneShot(audioSource.clip, audioManager.ambientVolume);
-            StartCoroutine(beforeDestroy(audioSource.clip.length));
+                //audioSource.PlayOneShot(audioSource.clip, audioManager.ambientVolume);
+            //sStartCoroutine(beforeDestroy(audioSource.clip.length));
+            StartCoroutine(beforeDestroy(1));
         }
 
 
@@ -85,6 +87,8 @@ public class TargetBehaviourDropMob : MonoBehaviour
         //Check for a match with the specific tag on any GameObject that collides with your GameObject
         if (collision.gameObject.tag == "raccoglibile")
         {
+
+            Debug.Log("Danno");
             danno(collision.gameObject.GetComponent<ComportamentoOggettoLanciabile>().getDanno());
         }
     }
@@ -92,13 +96,13 @@ public class TargetBehaviourDropMob : MonoBehaviour
     public void danno(int danno)
     {
         life -= danno;
-        //barraVita.GetComponent<BarraVitaPlayer>().TakeDamage(danno);
+       // barraVita.GetComponent<BarraVitaPlayer>().TakeDamage(danno);
         Messenger<string>.Broadcast(GameEvent.ENEMY_HIT, GameEvent.ENEMY_HIT, MessengerMode.DONT_REQUIRE_LISTENER);
 
-        Debug.Log(audioManager.getVolumeAmbient());
-        Debug.Log(audioManager.ambientVolume);
-        if (audioManager.ambientOn) 
-            audioSource.PlayOneShot(audioSource.clip, audioManager.ambientVolume);           
+       // Debug.Log(audioManager.getVolumeAmbient());
+        //Debug.Log(audioManager.ambientVolume);
+        //if (audioManager.ambientOn) 
+           // audioSource.PlayOneShot(audioSource.clip, audioManager.ambientVolume);           
 
 
     }

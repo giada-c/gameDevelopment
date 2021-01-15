@@ -17,11 +17,7 @@ public class ComportamentoPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Conrol if the player still alive
-        if (barraVita.GetComponent<BarraVitaPlayer>().GetHealth()==0)
-        {
-            //gameoverManager.gameOver();
-        }
+
     }
     private void OnCollisionEnter(Collision other)
     {
@@ -48,5 +44,6 @@ public class ComportamentoPlayer : MonoBehaviour
     { 
         gameoverManager = gm;
     }
+    
 
 }

@@ -30,12 +30,12 @@ public class GrabZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Joystick1Button2))
+        if (Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Joystick1Button3))
         {
-             Debug.Log("YEEEET");
+            
              if (inventario.getState() != InventoryState.EMPTY)
              {
-                 Debug.Log("YEEEET1");
+                 
                  GameObject g = inventario.removeItem();
                  if (g != null)
                  {
@@ -48,7 +48,7 @@ public class GrabZone : MonoBehaviour
             {
                 if (possoRaccogliere && inventario.getState() != InventoryState.FULL)
                 {
-                    Debug.Log("RACCOLTA1");
+                    
                     possibileRaccolta.GetComponent<ComportamentoOggettoLanciabile>().SetPortaOggetto(portaOggetto);
                     GameObject g = possibileRaccolta;
                     inventario.addItem(g);
@@ -65,9 +65,9 @@ public class GrabZone : MonoBehaviour
                     possibileMangiata = null;
                 }
             }
-            if (Input.GetKeyUp(KeyCode.I))
+            if (Input.GetKeyUp(KeyCode.I) ||(Input.GetKeyUp(KeyCode.Joystick1Button5)))
             {
-            Debug.Log("AAAAAAAA");
+            
             inventario.showInventory();
             }
         
@@ -77,7 +77,7 @@ public class GrabZone : MonoBehaviour
         //Check for a match with the specific tag on any GameObject that collides with your GameObject
         if (other.gameObject.tag == "raccoglibile" && other.gameObject.GetComponent<ComportamentoOggettoLanciabile>().isTerra() )
         {
-            Debug.Log("POSSO RACCOGLIERE");
+           
             possoRaccogliere = true;
             possibileRaccolta = other.gameObject;  
         }
@@ -98,5 +98,10 @@ public class GrabZone : MonoBehaviour
         possoMangiare = false;
         possibileMangiata = null;
 
+    }
+
+    public void setDrawInventory(GameObject d)
+    {
+        drawInventory = d;
     }
 }

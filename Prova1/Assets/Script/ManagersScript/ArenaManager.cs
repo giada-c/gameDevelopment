@@ -8,6 +8,7 @@ public class ArenaManager : MonoBehaviour
    
     public MusicManager audioManager;
     public GameoverManager gameoverManager;
+   /* public GameObject drawInventory;*/
     public int nPlayers = 1;
     public int nItems = 20;
     public int nEnemies = 10;
@@ -70,6 +71,7 @@ public class ArenaManager : MonoBehaviour
             GameObject t;
             t= Instantiate(playerPrefab, spawnAreaPlayer[i].transform.position, spawnAreaPlayer[i].transform.rotation);
             t.GetComponent<ComportamentoPlayer>().setGameOvermanager(gameoverManager);
+           /* t.GetComponent<GrabZone>().setDrawInventory(drawInventory);*/
             players.Add(t);
         }
         
@@ -77,11 +79,11 @@ public class ArenaManager : MonoBehaviour
 
     void posizionaItems()
     {
-        itemPrefabList.Add(Resources.Load<GameObject>("Item/Item0"));
+        /*itemPrefabList.Add(Resources.Load<GameObject>("Item/Item0"));
         itemPrefabList.Add(Resources.Load<GameObject>("Item/Item1"));
         itemPrefabList.Add(Resources.Load<GameObject>("Item/Item2"));
         itemPrefabList.Add(Resources.Load<GameObject>("Item/Item3"));
-        itemPrefabList.Add(Resources.Load<GameObject>("Item/Item4"));
+        itemPrefabList.Add(Resources.Load<GameObject>("Item/Item4"));*/
         while (spawnedItem.Count < nItems)
             creaItem();
 
@@ -90,10 +92,10 @@ public class ArenaManager : MonoBehaviour
         if (spawnedItem.Count < nItems)
             creaItem();
 
-        foreach (GameObject s in spawnedItem){
+        /*foreach (GameObject s in spawnedItem){
             if (s == null)
                 spawnedItem.Remove(s);
-        }
+        }*/
     }
     void creaItem()
     {
@@ -106,9 +108,9 @@ public class ArenaManager : MonoBehaviour
 
     void posizionaEnemies()
     {
-        enemiesPrefabList.Add(Resources.Load<GameObject>("Enemy/Enemy0"));
+        /*enemiesPrefabList.Add(Resources.Load<GameObject>("Enemy/Enemy0"));
         enemiesPrefabList.Add(Resources.Load<GameObject>("Enemy/Enemy1"));
-        enemiesPrefabList.Add(Resources.Load<GameObject>("Enemy/Enemy2"));
+        enemiesPrefabList.Add(Resources.Load<GameObject>("Enemy/Enemy2"));*/
         for (int i = 0; i < nEnemies; i++)
             creaEnemy();
     }
@@ -116,6 +118,8 @@ public class ArenaManager : MonoBehaviour
     {
         if (spawnedEnemies.Count < nEnemies)
             creaEnemy();
+
+
 
         //spawnedEnemies.RemoveAll(s => s == null);
     }
